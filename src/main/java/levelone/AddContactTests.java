@@ -3,6 +3,7 @@ package levelone;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -29,6 +30,13 @@ public class AddContactTests extends BaseTest{
         inputPassword.sendKeys("123456Aa$");
         // click login btn by: //button[@name='login']
         driver.findElement(By.xpath("//button[@name='login']")).click();
+    }
+
+    @AfterClass
+    public void methodPostCondition() {
+        driver.findElement(
+                By.xpath("//div[contains(@class,'navbar-logged')]//button")).click();
+        driver.navigate().to("https://telranedu.web.app/home");
     }
 
     @Test
