@@ -10,9 +10,22 @@ import org.testng.annotations.BeforeSuite;
 
 import java.time.Duration;
 
+import dto.UserDTO;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+
+import java.time.Duration;
+
 public class BaseTest {
 
     static WebDriver driver;
+    UserDTO user = new UserDTO().setEmail("r.resh24@gmail.com").setPassword("Qwadr23$");
 
     @BeforeSuite
     public static void init() {
@@ -77,14 +90,14 @@ public class BaseTest {
         inputEmail.sendKeys(email);
     }
 
-    public void clickLoginOnNavBtn() {
+    public void clickLoginOnNavBar() {
         driver.findElement(By.xpath("//a[@href='/login']")).click();
     }
 
-    public void login(UserDTO userDTO) {
-        fillEmailOnLogin(userDTO.getEmail());
+    public void login(UserDTO user) {
+        fillEmailOnLogin(user.getEmail());
         // fill password by: //input[@name='password'] "123456Aa$"
-        fillPasswordOnLogin(userDTO.getPassword());
+        fillPasswordOnLogin(user.getPassword());
         // click login btn by: //button[@name='login']
         clickLoginBtn();
     }
