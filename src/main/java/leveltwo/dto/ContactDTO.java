@@ -1,4 +1,4 @@
-package dto;
+package leveltwo.dto;
 
 public class ContactDTO {
     private String name;
